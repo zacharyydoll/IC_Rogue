@@ -28,7 +28,11 @@ public abstract class ICRogueRoom extends Area implements Logic {
     private boolean signalIsOn;
     protected boolean isVisited;
 
-    public ICRogueRoom(List<DiscreteCoordinates> connectorCoordinates, List<Orientation> orientations, String BehaviorName, DiscreteCoordinates roomCoordinates) {
+    public ICRogueRoom(List<DiscreteCoordinates> connectorCoordinates,
+                       List<Orientation> orientations,
+                       String BehaviorName,
+                       DiscreteCoordinates roomCoordinates) {
+
         this.connectorCoordinates = connectorCoordinates;
         this.orientations = orientations;
         this.roomCoordinates = roomCoordinates;
@@ -79,7 +83,6 @@ public abstract class ICRogueRoom extends Area implements Logic {
     }
 
     public void changeLockConnector(ConnectorInRoom connector){
-        //changeRoomCoordinates(connector,destination);
         connectors.get(connector.getIndex()).setState(Connector.ConnectorState.LOCKED);
     }
     public void setVisited(boolean b) {
@@ -96,17 +99,11 @@ public abstract class ICRogueRoom extends Area implements Logic {
                     connector.setState(Connector.ConnectorState.OPEN);
             }
         }
-        /*if(keyboard.get(Keyboard.T).isPressed()) {
-            for (Connector connector : connectors) {
-                connector.changeState();
-            }
-        }
-        if (keyboard.get(Keyboard.L).isPressed()) {
-            connectors.get(0).setState(Connector.ConnectorState.LOCKED);
-        }*/
+
         if (keyboard.get(Keyboard.O).isPressed()) {
             for (Connector connector : connectors) {
-                if(connector.getState() == Connector.ConnectorState.CLOSED || connector.getState() == Connector.ConnectorState.LOCKED)
+                if(connector.getState() == Connector.ConnectorState.CLOSED ||
+                        connector.getState() == Connector.ConnectorState.LOCKED)
                     connector.setState(Connector.ConnectorState.OPEN);
             }
         }

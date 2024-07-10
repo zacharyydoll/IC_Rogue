@@ -30,9 +30,18 @@ public class Connector extends AreaEntity implements Interactable {
         this.state = ConnectorState.INVISIBLE;
         this.keyIdentifier = NO_KEY_ID;
 
-        sprite_invisible = new Sprite("icrogue/invisibleDoor_"+orientation.ordinal(), (orientation.ordinal()+1)%2+1, orientation.ordinal()%2+1, this);
-        sprite_closed = new Sprite("icrogue/door_"+orientation.ordinal(), (orientation.ordinal()+1)%2+1, orientation.ordinal()%2+1, this);
-        sprite_locked = new Sprite("icrogue/lockedDoor_"+orientation.ordinal(), (orientation.ordinal()+1)%2+1, orientation.ordinal()%2+1,this);
+        sprite_invisible = new Sprite("icrogue/invisibleDoor_"+orientation.ordinal(),
+                (orientation.ordinal()+1)%2+1,
+                orientation.ordinal()%2+1,
+                this);
+        sprite_closed = new Sprite("icrogue/door_"+orientation.ordinal(),
+                (orientation.ordinal()+1)%2+1,
+                orientation.ordinal()%2+1,
+                this);
+        sprite_locked = new Sprite("icrogue/lockedDoor_"+orientation.ordinal(),
+                (orientation.ordinal()+1)%2+1,
+                orientation.ordinal()%2+1,
+                this);
     }
 
     public Connector(Area currentArea, Orientation orientation, DiscreteCoordinates position, int keyIdentifier) {
@@ -100,7 +109,6 @@ public class Connector extends AreaEntity implements Interactable {
     @Override
     public void acceptInteraction(AreaInteractionVisitor v, boolean isCellInteraction) {
         ((ICRogueInteractionHandler) v).interactWith(this, isCellInteraction);
-        System.out.println("Accept interaction");
     }
 
     @Override

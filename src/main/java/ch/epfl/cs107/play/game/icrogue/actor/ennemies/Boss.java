@@ -33,10 +33,14 @@ public class Boss extends Enemy implements Interactor {
     private float timerCounter;
     private boolean isDead;
 
-    private Sprite sprite_bottom = new Sprite("zelda/darkLord", 2, 1.3F, this, new RegionOfInterest(0, 64, 32, 32), new Vector(.15f, -.15f));
-    private Sprite sprite_top = new Sprite("zelda/darkLord", 2, 1.3F, this, new RegionOfInterest(0, 0, 32, 32), new Vector(.15f, -.15f));
-    private Sprite sprite_left = new Sprite("zelda/darkLord", 2, 1.3F, this, new RegionOfInterest(0, 32, 32, 32), new Vector(.15f, -.15f));
-    private Sprite sprite_right = new Sprite("zelda/darkLord", 2, 1.3F, this, new RegionOfInterest(0, 96, 32, 32), new Vector(.15f, -.15f));
+    private Sprite sprite_bottom = new Sprite("zelda/darkLord", 2, 1.3F, this,
+            new RegionOfInterest(0, 64, 32, 32), new Vector(.15f, -.15f));
+    private Sprite sprite_top = new Sprite("zelda/darkLord", 2, 1.3F, this,
+            new RegionOfInterest(0, 0, 32, 32), new Vector(.15f, -.15f));
+    private Sprite sprite_left = new Sprite("zelda/darkLord", 2, 1.3F, this,
+            new RegionOfInterest(0, 32, 32, 32), new Vector(.15f, -.15f));
+    private Sprite sprite_right = new Sprite("zelda/darkLord", 2, 1.3F, this,
+            new RegionOfInterest(0, 96, 32, 32), new Vector(.15f, -.15f));
 
     private Boss(Area area, Orientation orientation, DiscreteCoordinates position, int fullHP) {
         super(area, orientation, position, fullHP);
@@ -58,10 +62,7 @@ public class Boss extends Enemy implements Interactor {
         Orientation orientation;
         FireBall fireBall;
 
-
-        for (Orientation o : Orientation.values()) {
-            randomOrientations.add(o);
-        }
+        Collections.addAll(randomOrientations, Orientation.values());
 
         do {
             randomInt = RandomGenerator.getInstance().nextInt(randomOrientations.size());
@@ -136,7 +137,9 @@ public class Boss extends Enemy implements Interactor {
 
             case ATTACK:
                 if (strategicOrienting()) {
-                    FireBall fireball = new FireBall(getOwnerArea(), getOrientation(), getCurrentMainCellCoordinates().jump(getOrientation().toVector()));
+                    FireBall fireball = new FireBall(getOwnerArea(), getOrientation(),
+                            getCurrentMainCellCoordinates().jump(getOrientation().toVector()));
+
                     getOwnerArea().registerActor(fireball);
                     fireball.setFiredByPlayer(false);
                     state = State.NORMAL;

@@ -155,7 +155,7 @@ public class ICRoguePlayer extends ICRogueActor implements Interactor {
                     --nbOfArrows;
 
                 } else {
-                    System.out.println("OUT OF ARROWS");
+                    System.out.println("out of arrows!");
                 }
             }
         }
@@ -279,10 +279,8 @@ public class ICRoguePlayer extends ICRogueActor implements Interactor {
     public void addEnergy(int energy) {
         if (energylevel + energy > MAX_ENERGY) {
             energylevel = MAX_ENERGY;
-            System.out.println("player HP: " + getEnergylevel());
         } else {
             energylevel += energy;
-            System.out.println("player HP: " + getEnergylevel());
         }
     }
 
@@ -321,7 +319,6 @@ public class ICRoguePlayer extends ICRogueActor implements Interactor {
             if (key.isCellInteractable()) {
                 getOwnerArea().unregisterActor(key);
                 hasKey = true;
-                //keyIdentifiers.add(key.getIdentifier());
             }
         }
 
@@ -329,7 +326,8 @@ public class ICRoguePlayer extends ICRogueActor implements Interactor {
             if (!(connector.getState().equals(Connector.ConnectorState.OPEN)) && hasKey) {
                 connector.setState(Connector.ConnectorState.OPEN);
 
-            } else if (connector.getState().equals(Connector.ConnectorState.OPEN) && !isDisplacementOccurs() && wantsCellInteraction()) {
+            } else if (connector.getState().equals(Connector.ConnectorState.OPEN) &&
+                    !isDisplacementOccurs() && wantsCellInteraction()) {
                 passedConnector = connector;
                 isPassingConnector = true;
                 connector.setState(Connector.ConnectorState.CLOSED);

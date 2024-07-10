@@ -123,7 +123,6 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
      * @return (boolean): true if the actor is correctly registered
      */
     public final boolean registerActor(Actor a){
-        // TODO if actor can be registered: It is this Area decision, implement a strategy
         return registeredActors.add(a);
     }
 
@@ -133,7 +132,6 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
      * @return (boolean): true if the actor is correctly unregistered
      */
     public final boolean unregisterActor(Actor a){
-        // TODO if actor can be unregistered: It is this Area decision, implement a strategy
         return unregisteredActors.add(a);
     }
 
@@ -183,7 +181,8 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
     /** @return the mouse coordinates relatively to the area and the cells */
     public DiscreteCoordinates getRelativeMouseCoordinates() {
     	Vector mousePosition = getRelativeMousePosition();
-    	DiscreteCoordinates mouseCoordinate = new DiscreteCoordinates((int)Math.floor(mousePosition.x), (int)Math.floor(mousePosition.y));
+    	DiscreteCoordinates mouseCoordinate = new DiscreteCoordinates((int)Math.floor(mousePosition.x),
+                (int)Math.floor(mousePosition.y));
     	return mouseCoordinate;
     }
     
@@ -370,10 +369,8 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
      *             be responsible of the ResumeRequest, not null
      */
     public final void requestAreaPause(AreaPauseMenu menu){
-        // TODO if the request end up: It is this Area decision, implement a strategy
         if(menu != null) {
             this.menu = menu;
-            // Important to begin the menu each time : isResumeRequested must be set to false
             this.menu.begin(window, fileSystem);
             this.menu.setOwner(this);
         }
@@ -382,7 +379,6 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
 
     @Override
     public final void requestPause() {
-        // TODO if the request end up: It is this Area decision, implement a strategy
         this.paused = true;
     }
 
@@ -393,7 +389,6 @@ public abstract class Area implements Playable, PauseMenu.Pausable {
      */
     @Override
     public final void requestResume() {
-        // TODO if the request end up: It is this Area decision, implement a strategy
         this.paused = false;
     }
 

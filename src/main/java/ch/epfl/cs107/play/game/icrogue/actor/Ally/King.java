@@ -58,15 +58,6 @@ public class King extends Ally implements Interactor {
         }
     }
 
-    /*public void takeDamage(int dmg) {
-        //this method would be used in superieur levels,
-        // if the player's friend was also in a room with monsters
-        energy -= dmg;
-        if (energy <= 0) {
-            isDead = true;
-        }
-    } */
-
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);

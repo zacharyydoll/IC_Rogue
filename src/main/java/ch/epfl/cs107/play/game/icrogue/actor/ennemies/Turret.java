@@ -27,7 +27,8 @@ public class Turret extends Enemy {
 
     public Turret(Area area, Orientation orientation, DiscreteCoordinates position, List<Orientation> orientationArrows) {
         super(area, orientation, position);
-        setSprite(new Sprite("icrogue/static_npc", 1.5f, 1.5f, this, null, new Vector(-0.25f, 0)));
+        setSprite(new Sprite("icrogue/static_npc", 1.5f, 1.5f,
+                this, null, new Vector(-0.25f, 0)));
         this.orientationArrows = new ArrayList<>(orientationArrows); // deep copy of the list to avoid encapsulation errors
         this.timeCounter = 0;
         isDead = false;
